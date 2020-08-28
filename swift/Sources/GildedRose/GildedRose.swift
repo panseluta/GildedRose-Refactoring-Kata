@@ -52,7 +52,7 @@ public class GildedRose : GildedRoseProtocol {
 				}
 			case "Aged Brie":
 				// "Aged Brie" actually increases in Quality the older it gets
-				deltaQuality = Item.normalQualityModifyingFactor() * qualityModifier
+				deltaQuality = qualityModifier
 			default:
 				deltaQuality = -qualityModifier
 			}
