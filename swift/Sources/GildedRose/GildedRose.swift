@@ -5,6 +5,22 @@ public protocol GildedRoseProtocol {
 	func updateQuality()
 }
 
+public class GildedRoseSubclasses : GildedRoseProtocol {
+	public var items:[Item]
+	
+	public init(items:[Item]) {
+		self.items = items
+	}
+	
+	public func updateQuality() {
+		items.forEach { item in
+			item.updateSellIn()
+			item.updateQuality()
+		}
+	}
+	
+}
+
 public class GildedRose : GildedRoseProtocol {
     public var items:[Item]
     
