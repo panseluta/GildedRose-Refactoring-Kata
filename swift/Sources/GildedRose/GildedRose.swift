@@ -1,3 +1,5 @@
+import Foundation
+
 public class GildedRose {
     var items:[Item]
     
@@ -11,6 +13,10 @@ public class GildedRose {
                 if (items[i].quality > 0) {
                     if (items[i].name != "Sulfuras, Hand of Ragnaros") {
                         items[i].quality = items[i].quality - 1
+						
+						if (items[i].name.contains("Conjured")) {
+							items[i].quality = items[i].quality - 1
+						}
                     }
                 }
             } else {
@@ -43,6 +49,10 @@ public class GildedRose {
                         if (items[i].quality > 0) {
                             if (items[i].name != "Sulfuras, Hand of Ragnaros") {
                                 items[i].quality = items[i].quality - 1
+								
+								if (items[i].name.contains("Conjured")) {
+									items[i].quality = items[i].quality - 1
+								}
                             }
                         }
                     } else {
