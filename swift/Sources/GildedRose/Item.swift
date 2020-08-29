@@ -20,39 +20,34 @@ extension Item: CustomStringConvertible {
 
 @objc protocol UpdateItemProtocol {
 	
-	func updateQuality()
-	func updateSellIn()
+	func updateItem()
 
 }
 
 extension Item : UpdateItemProtocol {
 	
-	func updateQuality() {
+	func updateItem() {
+		sellIn = sellIn - 1
+		
 		let deltaQuality = sellIn < 0 ? -2 : -1
 		quality = max(min(quality + deltaQuality, 50), 0)
-	}
-	
-	func updateSellIn() {
-		sellIn = sellIn - 1
 	}
 	
 }
 
 public class Sulfuras : Item {
 	
-	override func updateQuality() {
+	override func updateItem() {
 		quality = 80
-	}
-	
-	override func updateSellIn() {
-		return
 	}
 	
 }
 
 public class ConjuredItem : Item {
 	
-	override func updateQuality() {
+	override func updateItem() {
+		sellIn = sellIn - 1
+		
 		let deltaQuality = sellIn < 0 ? -4 : -2
 		quality = max(min(quality + deltaQuality, 50), 0)
 	}
@@ -61,7 +56,9 @@ public class ConjuredItem : Item {
 
 public class AgedBrie : Item {
 	
-	override func updateQuality() {
+	override func updateItem() {
+		sellIn = sellIn - 1
+		
 		let deltaQuality = sellIn < 0 ? 2 : 1
 		quality = max(min(quality + deltaQuality, 50), 0)
 	}
@@ -70,7 +67,9 @@ public class AgedBrie : Item {
 
 public class BackstagePass : Item {
 	
-	override func updateQuality() {
+	override func updateItem() {
+		sellIn = sellIn - 1
+		
 		var deltaQuality = 0
 		
 		switch sellIn {

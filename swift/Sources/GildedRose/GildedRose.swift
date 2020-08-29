@@ -14,8 +14,7 @@ public class GildedRoseSubclasses : GildedRoseProtocol {
 	
 	public func updateQuality() {
 		items.forEach { item in
-			item.updateSellIn()
-			item.updateQuality()
+			item.updateItem()
 		}
 	}
 	
