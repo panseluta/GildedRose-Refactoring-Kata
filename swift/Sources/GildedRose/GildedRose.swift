@@ -162,3 +162,30 @@ public extension Item {
 	}
 	
 }
+
+protocol ItemFactory {
+	
+	func createItem(name: String, sellIn: Int, quality: Int) -> Item
+
+}
+
+public class GildedRoseItemFactory : ItemFactory {
+	
+	public init() {}
+	
+	public func createItem(name: String, sellIn: Int, quality: Int) -> Item {
+		switch name {
+		case _ where name.contains("Conjured"):
+			return ConjuredItem(name: name, sellIn: sellIn, quality: quality)
+		case _ where name.contains("Backstage passes"):
+			return BackstagePass(name: name, sellIn: sellIn, quality: quality)
+		case "Sulfuras, Hand of Ragnaros":
+			return Sulfuras(name: name, sellIn: sellIn, quality: quality)
+		case "Aged Brie":
+			return AgedBrie(name: name, sellIn: sellIn, quality: quality)
+		default:
+			return Item(name: name, sellIn: sellIn, quality: quality)
+		}
+	}
+	
+}
